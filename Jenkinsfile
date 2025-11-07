@@ -18,7 +18,7 @@ pipeline {
         stage('Run') {
             steps {
                 echo "Running Python script..."
-                sh 'python kb.py'
+                bat 'python kb.py'
             }
         }
     }
