@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     environment {
-        // Replace with your actual Python path
-        PYTHON_HOME = 'C:\Users\SaishNaik\AppData\Local\Programs\Python\Python313'''
+        PYTHON_HOME = 'C:\\Users\\SaishNaik\\AppData\\Local\\Programs\\Python\\Python313'
         PATH = "${env.PYTHON_HOME};${env.PYTHON_HOME}\\Scripts;${env.PATH}"
     }
 
@@ -24,7 +23,7 @@ pipeline {
         stage('Run') {
             steps {
                 echo "Running Python script..."
-                bat 'python kb.py'
+                bat '"C:\\Users\\SaishNaik\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" kb.py'
             }
         }
     }
