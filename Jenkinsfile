@@ -1,29 +1,17 @@
 pipeline {
     agent any
 
-    environment {
-        PYTHON_HOME = 'C:\\Users\\SaishNaik\\AppData\\Local\\Programs\\Python\\Python313'
-        PATH = "${env.PYTHON_HOME};${env.PYTHON_HOME}\\Scripts;${env.PATH}"
-    }
-
     stages {
-        stage('Checkout') {
+        stage('Checkout Latest Code') {
             steps {
+                echo "Pulling latest code from GitHub..."
                 checkout scm
             }
         }
 
-        stage('Build') {
+        stage('Notify') {
             steps {
-                echo "Installing dependencies..."
-                echo "No requirements.txt found"
-            }
-        }
-
-        stage('Run') {
-            steps {
-                echo "Running Python script..."
-                bat '"C:\\Users\\SaishNaik\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" kb.py'
+                echo "Code has been updated and pulled locally. No scripts are run."
             }
         }
     }
