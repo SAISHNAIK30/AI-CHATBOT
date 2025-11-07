@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    environment {
+        // Replace with your actual Python path
+        PYTHON_HOME = 'C:\Users\SaishNaik\AppData\Local\Programs\Python\Python313'''
+        PATH = "${env.PYTHON_HOME};${env.PYTHON_HOME}\\Scripts;${env.PATH}"
+    }
+
     stages {
         stage('Checkout') {
             steps {
