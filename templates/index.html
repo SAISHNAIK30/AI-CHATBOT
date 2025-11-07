@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confluence AI Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        h1 {
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 8px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+        input[type="file"] {
+            margin-top: 10px;
+        }
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .btn-row button, .btn-row a button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .clear-btn {
+            background-color: red;
+            color: white;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Confluence AI Chatbot</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label>Upload Image:</label>
+        <input type="file" name="image" accept="image/*">
+
+        <label>Or Enter Your Question:</label>
+        <textarea name="text" placeholder="Type your question here...">{{ request.form.text or '' }}</textarea>
+
+        <div class="btn-row">
+            <button type="submit" class="submit-btn">Get Solution</button>
+            <a href="{{ url_for('clear') }}">
+                <button type="button" class="clear-btn">Clear</button>
+            </a>
+        </div>
+    </form>
+
+    {% if result %}
+        <div class="result">
+            <strong>Solution:</strong>
+            <div>{{ result | safe }}</div>
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>
